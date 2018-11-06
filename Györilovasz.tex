@@ -1,0 +1,174 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Vorlage: Mathematische Texte
+%
+% Quelle: http://www.mi.uni-koeln.de/wp-MIEDV/% Datum: Juli 201% Copyright Universität zu Köln
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,a4paper]{scrartcl}
+
+\addtokomafont{sectioning}{\rmfamily}
+\usepackage[ngerman]{babel}% deutsches Sprachpaket wird geladen
+%\usepackage[english]{babel}% englisches Sprachpaket wird geladen
+\usepackage[T1]{fontenc} % westeuropäische Codierung wird verlangt
+\usepackage[utf8]{inputenc}% Umlaute werden erlaubt
+\usepackage[usenames]{color} % Erlaubt die Benutzung der namen im Farbpaket und deren Änderung
+%\usepackage{showkeys} % Labels anzeigen
+\usepackage{amsmath} % Erweiterung für den Mathe-Satz
+\usepackage{amssymb} % alle Zeichen aus msam und msmb werden dargestellt
+\usepackage{pdfpages}
+\usepackage{framed}
+\usepackage{color}
+\usepackage{url}
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx} % Graphiken und Bilder können eingebunden werden
+\usepackage{multirow} % erlaubt in einer Spalte einer Tabelle die Felder in mehreren Zeilen zusammenzufassen
+\usepackage{enumerate} % erlaubt Nummerierungen 
+\usepackage{url} % Dient zur Auszeichnung von URLs; setzt die Adresse in Schreibmaschinenschrift.
+\usepackage[center]{caption}  % Bildunterschrift wird zentriert
+\usepackage{subfigure} % mehrere Bilder können in einer fugure-Umgebung verwendet werden
+\usepackage{longtable} % Diese Umgebung ist ähnlich definiert wie die tabular-Umgebung, erlaubt jedoch mehrseitige Tabellen.
+\usepackage{paralist} % Modifikation der bereits bestehenden Listenumgebungen
+\usepackage{lmodern}% Für die Schrift
+\usepackage{amsthm} % erlaubt die Benutzung von eigenen Theoremen
+\usepackage{hyperref} % Links und Verweise werden innerhalb von PDF Dokumenten erzeugt
+\usepackage{wrapfig} % Das Paket ermöglicht es von Schrift umflossene Bilder und Tabellen einzufügen.
+\numberwithin{equation}{section} % Nummerierungen der Gleichungen, die durch equation erstellt werden, sind gebunden an die section
+\usepackage{latexsym} % LaTeX-Symbole werden geladen
+\usepackage{tikz} % Erlaubt es mit tikz zu zeichnen
+\usepackage{tabularx} % Erlaubt Tabellen 
+\usepackage{algorithm} % Erlaubt Pseudocode
+\usepackage{algorithmic}
+\usepackage{color} % Farbpaket wird geladen
+\usepackage{stmaryrd} % St Mary Road Symbole werden geladen
+
+% Hier werden neue Theorems erstellt.
+\theoremstyle{definition}
+\newtheorem{auf}{Aufgabe}
+\newtheorem{rem}[auf]{Bemerkung}
+\newtheorem{defn}[auf]{Definition}
+\newtheorem{bsp}[auf]{Beispiel}
+\theoremstyle{plain}
+\newtheorem{kor}[auf]{Korollar}
+\newtheorem{sa}[auf]{Satz}
+\newtheorem{alg}[auf]{Algorithmus}
+\newtheorem{lem}[auf]{Lemma}
+\DeclareMathOperator*{\esssup}{ess\,sup} % essentiellen Supremums
+\DeclareMathOperator{\spn}{span} % Span
+\DeclareMathOperator{\supp}{supp} % Träger
+\newcommand{\abs}[1]{\left\vert #1\right\vert}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\g}{~\textgreater ~}
+\newcommand{\ls}{~\textless ~}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\e}{\varepsilon\g 0~}
+\newcommand{\fe}{\forall \e}
+\newcommand{\so}{\sum_{k=0}^{n}}
+\newcommand{\si}{\sum_{k=1}^{n}}
+\newcommand{\soi}{\sum_{k=0}^{\infty}}
+\newcommand{\sii}{\sum_{k=1}^{\infty}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\floatname{algorithm}{Algorithmus}
+\begin{document}
+% Hier wird die Titelseite erstellt
+\begin{titlepage}
+\pagestyle{empty}
+\begin{center}
+
+\textsc{\LARGE Universität zu Köln }\\ [0.4cm]
+\textsc{ Mathematisches Institut} \\[1.5cm]
+
+\includegraphics[width=0.45\textwidth]{uni}\\[1.5cm]  % Uni-Logo wird geladen
+
+\textsc{\Large Ausarbeitung Seminar Informatik}\\[2mm]
+\textsc{\today}\\[10mm]
+  
+
+\newcommand{\HRule}{\rule{\linewidth}{0.7mm}}
+\HRule \\[0.4cm]
+{ \huge \bfseries Das \textsc{Györi-Lovász} Theorem}\\[0.4cm]
+
+\HRule \\[3cm]
+
+\begin{center}
+
+\textsc{\Large Nils Dornbusch} \\[3pt]
+\end{center}
+\end{center}
+\end{titlepage}
+\newpage
+In dieser Ausarbeitung wollen wir folgendes Theorem beweisen:
+\begin{sa}[\textsc{Györi-Lovász} Theorem]
+Sei $k\ge 2$ und $G$ ein $k$-zusammenhängender Graph mit $n$ Knoten. Seien $v_1,\dotsc,v_k$ paarweise verschiedene Knoten und $n_1,\dotsc,n_k\in\nn$ mit $\sum_{i=1}^kn_i=n$. Dann hat $G$ disjunkte zusammenhängende Teilgraphen $G_1,\dotsc,G_k$, sodass für $i=1,\dotsc,k$ $G_i$ genau $n_i$ Knoten hat und $v_i\in V(G_i)$ ist.
+\end{sa}
+\begin{bsp}
+TBW
+\end{bsp}
+Es reicht offensichtlich folgenden Satz zu zeigen.
+\begin{sa}
+Sei $k\ge 2$ und $G$ ein $k$-zusammenhängender Graph mit $n$ Knoten. Seien $v_1,\dotsc,v_k$ paarweise verschiedene Knoten und $n_1,\dotsc,n_k\in\nn$ mit $\sum_{i=1}^kn_i<n$. Dann hat $G$ disjunkte zusammenhängende Teilgraphen $G_1,\dotsc,G_k$, sodass für $i=1,\dotsc,k$ $G_i$ genau $n_i$ Knoten hat und $v_i\in V(G_i)$ ist. Dann hat $G$ disjunkte zusammenhängende Teilgraphen $G'_1,\dotsc,G'_k$, sodass $v_i\in V(G'_i)~\forall i=1,\dotsc,k$. $G'_1$ hat $n_1+1$ Knoten und alle anderen $G'_i$ $n_i$ Knoten.
+\label{sa:2}
+\end{sa}
+In dem Beweis hiervon werden wir viele Begriffe verwenden, die von der Hydrologie inspiriert wurden. Knoten können als \emph{Dämme} agieren und andere Knoten von Rest eines Teilgraphen von $G$ abschneiden (Reservoir). Eine Folge von Dämmen nennen wir \emph{Kaskade}. Mathematisch bedeutet das:
+\begin{defn}
+Seien $G_1,\dotsc, G_k$ wie in Satz \ref{sa:2} und $i=2,\dotsc,k$. Für einen Knoten $v\in V\setminus G_i$ definieren wir ein \emph{Reservoir} 
+\[R(v)=\left\lbrace u\in V(G_i)\colon \exists u-v_i-\text{Weg in }G_i\setminus v\right\rbrace\] 
+\end{defn}
+\begin{bsp}
+TBW
+\end{bsp}
+\begin{defn}
+Eine \emph{Kaskade} in $G_i$ ist eine (möglicherweise leere) Folge $w_1,\dotsc,w_m$ von Knoten in $G_i\setminus v_i$, sodass $w_{j+1}\not\in R(w_j)~\forall j=1,\dotsc,m-1$ 
+\end{defn}
+\begin{bsp}
+TBW
+\end{bsp}
+Also trennt $w_j$ $w_{j-1}$ von $w_{j+1}$ in $G_i$. Hierbei sei $w_0=v_i$. 
+\begin{defn}
+Unter einer \emph{Konfiguration} verstehen wir eine Wahl von Teilgraphen $G_1,\dotsc,G_k$ wie in Satz \ref{sa:2} und genau eine Kaskade in jedem $G_i$ $\forall i=2,\dotsc,k$. Ein \emph{Kaskade Knoten} ist ein Knoten der zu einer Kaskade der Konfiguration gehört.
+\end{defn}
+Nun benötigen wir eine rekursive Definition für den nächsten Begriff.
+\begin{defn}
+Sei $w\in V(G_i)$ ein Kaskade Knoten. Wenn $w$ einen Nachbarn in $G_1$ hat, dann hat $w$ \emph{Rang} 1. Sonst in der Rang das kleinste $k\ge 2$, so dass ein Kaskade Knoten $w'\in V(G_j)$ existiert für ein $j=\lbrace 2,\dotsc,k\rbrace\setminus \lbrace i\rbrace$, so dass $w$ einen Nachbarn in $R(w')$ hat und $w'$ Rang $k-1$ hat. Wenn es keinen solchen Nachbarn gibt, ist der Rang nicht definiert. \par
+Für ein $r\ge 1$ sei $\rho_r=\abs{R(w)}$ für einen Kaskade Knoten $w$ mit Rang $r$. Eine Konfiguration heißt \emph{gültig}, wenn jeder Kaskade Knoten einen wohldefinierten Rang hat und der Rang streng ansteigt innerhalb der Kaskade. Die triviale Konfiguration (nur leere Kaskaden) ist offensichtlich gültig.
+\end{defn}
+\begin{bsp}
+\end{bsp}
+\begin{defn}
+Für $r\ge 1$ heißt eine gültige Konfiguration \emph{$r$-optimal}, wenn sie unter allen gültigen Konfigurationen $\rho_1$ maximiert unter der Bedingung, dass es $\rho_2$ maximiert usw. bis $\rho_r$. Wenn eine Konfiguration $r$-optimal ist für alle $r$, dann heißt sie einfach nur \emph{optimal}. \par 
+Zum Schluss definieren wir $S:=V(G)\setminus \bigcup G_i$. Das ist in dem Aufbau von Satz \ref{sa:2} nichtleer. Wir sagen eine \emph{Brücke} ist eine Kante mit einem Ende in $S$ und dem anderen Ende in einem Kaskade Knoten. In einer gültigen Konfiguration ist der \emph{Rang der Brücke} das Minimum der Ränge aller Kaskade Knoten $w$, wobei die Brücke ein Ende in $R(w)$ hat. 
+\end{defn}
+
+\begin{lem}
+Wenn es eine optimale Konfiguration gibt, die eine Brücke enthält, dann folgt Satz \ref{sa:2}.
+\label{lem:3}
+\end{lem}
+\begin{proof}
+Angenommen es gibt eine optimale Konfiguration mit Brücke. Dann können wir für ein $r\in\nn$ eine Konfiguration finden, die $r$-optimal ist und eine Brücke vom Rang $r$ enthält. Wähle die Konfiguration und Brücke so, dass $r$ minimal ist. Seien $a\in S$ und $b\in R(w)\subset V(G_i)$ die Endpunkte der Brücke, wobei Rang von $w$ $r$ ist.\par
+Angenommen $w$ trennt $G_i$. Weil die Konfiguration gültig ist $\Rightarrow$ Alle Kaskade Knoten in $V(G_i)\setminus R(w)\setminus w$ haben Rang $r$. Sei $u$ von diesen ein nicht trennender Knoten. Eine neue gültige Konfiguration kann man wie folgt machen: Verschiebe $u$ nach$S$ und $a$ zu $G_i$. Wir lassen die Kaskaden gleich. Allerdings löschen wir alle Kaskade Knoten in $V(G_i)\setminus R(w)\setminus w$  und alle, deren Rang jetzt nicht definiert ist. Alle Knoten die betroffen sind haben Rang $>r$. Jetzt ist unsere neue Konfiguration gültig und $R(w)$ ist größer. Wir haben keine Reservoirs der Größe maximal $r$ geändert. Das ist aber ein Widerspruch zur $r$-Optimalität.\par 
+Also ist $w$ nich trennend für $G_i$. Sei $r=1$. Wähle $G'_1=G_1+w$ (inkl. aller Kanten die mit $w$ und $G_1$ indizieren) und $G'_i=G_i+a\setminus w$. Alle anderen lassen wir unverändert. Dann genügen diese Teilgraphen der Aussage von Satz \ref{sa:2}. \par 
+Wenn $r>1$, hat $w$ einen Nachbarn in einem $R(w')$ mit Rang von $w'_i=r-1$. Wie vorher bauen wir eine neue gültige Konfiguration indem wir $w$ nach $S$ und $a$ nach $G_i$ verschieben. Kaskaden lassen wir wieder gleich, aber: beende $w$s vorherige Kaskade genau vor $w$ und lösche alle Kaskade Knoten, deren Rang nicht mehr definiert ist. Obwohl wir möglicherweise mehrere Reservoirs von Rang $r$ und darüber verloren haben, ist die neue Konfiguration noch $(r-1)$ optimal. Die Kante von $w$ zu dem Nachbarn in $R(w')$ ist jetzt eine $r-1$-Brücke. Das ist ein Widerspruch zur Minimalität von $r$.
+\end{proof}
+\begin{lem}
+\label{lem:4}
+Angenommen es gibt eine optimale Konfiguration mit einer Kante $ab$, so dass 
+\begin{enumerate}
+\item Entweder $a\in V(G_1)$ oder $a$ ist in einem Reservoir und
+\item $b\in V(G_i)$ für ein $r\in\lbrace 2,\dotsc,k\rbrace,~b\neq v_i$ und $b$ ist nicht in einem Reservoir.
+\end{enumerate}
+Dann ist die Kaskade von $g_i$ nicht leer und $b$ ist der letzte Knoten dieser Kaskade.
+\end{lem}
+\begin{proof}
+Angenommen es gibt eine optimale Konfiguration und $b$ ist nicht der letzte Knoten in der Kaskade von $G_i$. Sei $w_1,\dotsc, w_m$ die Kaskade von $G_i$ (a priori möglicherweise leer). Weil $b$ nicht in einem Reservoir ist und nicht der letzte Knoten einer Kaskade, wissen wir, dass $b$ kein Kaskade Knoten ist. Wir bauen eine neue Konfiguration indem wir $b$ ans Ende der Kaskade von $G_i$ setzen. Wegen der ersten Bedingung hat $b$ einen wohldefinierten Rang. Wenn dieser Rang größer ist als alle anderen Ränge in der Kaskade, haben wir eine gültige Konfiguration und einen Widerspruch zur Optimalität, indem wir ein neues nichtleeres ($v_i\in R(s)$) Reservoir hinzugefügt haben. \par $\Rightarrow$ die vorherige Kaskade war nicht leer. Sei der Rang von $b$ $r$ und $j\ge 0$ so, dass $j=0$ wenn $r\le$rang$(w_i)$ und rang$(w_j)<r\le$rang$(w_{j+1})$ sonst. Wir löschen die Knoten $w_{j+1},\dotsc,w_m$ aus der Kaskade und fügen $b$ hinzu. Nun ist die Konfiguration offensichtlich gültig, aber es ist unklar, ob ein Widerspruch zur Optimalität erreicht wurde. Bemerke, dass jeder Knoten der zu $R(w_{j+1})\cup R(w_{j+1})\cup\dotsb\cup R(w_m)$ gehörte, nun in $R(b)$ liegt. Außerdem enthält $R(b)$ $w_m$, welches in keinem Reservoir vorher war. Wir haben also die Größe des Rang $r$ Reservoirs vergrößert ohne andere zu verändern, also ein Widerspruch zur Optimalität.
+\end{proof}
+\begin{proof}[Beweis von Satz \ref{sa:2}]
+Wir benutzen unsere Lemmata. Daher können wir also annehmen, dass wir eine optimale Konfiguration haben, die keine Brücken enthält und in der alle Kanten wir in Lemma \ref{lem:4} am Ende ihrer Kaskade liegen. Betrachte die Menge, die die letzten Knoten in jeder nicht-leeren Kaskade und $v_i$ für jede leere Kaskade enthält. Das ist ein Schnitt der Größe $k-1$, der $G_1$ und die Reservoirs vom Rest des Graphen (inklusive $S$) trennt. Das ist ein Widerspruch zu $k$-zusammenhängend. Also folgt mit Lemma \ref{lem:3} die Behauptung.
+\end{proof}
+\end{document}
+
+
+

@@ -41,7 +41,7 @@
 \usepackage{algorithm} % Erlaubt Pseudocode
 \usepackage{algorithmic}
 \usepackage{color} % Farbpaket wird geladen
-\usepackage{stmaryrd} % St Mary Road Symbole werden geladen
+%\usepackage{stmaryrd} % St Mary Road Symbole werden geladen
 
 % Hier werden neue Theorems erstellt.
 \theoremstyle{definition}
@@ -82,7 +82,7 @@
 \textsc{\LARGE Universität zu Köln }\\ [0.4cm]
 \textsc{ Mathematisches Institut} \\[1.5cm]
 
-\includegraphics[width=0.45\textwidth]{uni}\\[1.5cm]  % Uni-Logo wird geladen
+%\includegraphics[width=0.45\textwidth]{uni}\\[1.5cm]  % Uni-Logo wird geladen
 
 \textsc{\Large Ausarbeitung Seminar Informatik}\\[2mm]
 \textsc{\today}\\[10mm]
@@ -106,7 +106,36 @@ In dieser Ausarbeitung wollen wir folgendes Theorem beweisen:
 Sei $k\ge 2$ und $G$ ein $k$-zusammenhängender Graph mit $n$ Knoten. Seien $v_1,\dotsc,v_k$ paarweise verschiedene Knoten und $n_1,\dotsc,n_k\in\nn$ mit $\sum_{i=1}^kn_i=n$. Dann hat $G$ disjunkte zusammenhängende Teilgraphen $G_1,\dotsc,G_k$, sodass für $i=1,\dotsc,k$ $G_i$ genau $n_i$ Knoten hat und $v_i\in V(G_i)$ ist.
 \end{sa}
 \begin{bsp}
-TBW
+    Der folgende Graph ist ein Beispiel für $k=2$ und $n=4$. Seien $n_1=2$ und $n_2=2$ (links) beziehungsweise $n_1=3$ und $n_2=1$ (rechts).
+    \begin{figure}[h]
+        \centering
+\subfigure{
+\begin{tikzpicture}{
+    \node[draw, circle] (v1) at (0,2) {$v_1$};
+    \node[draw, circle] (v2) at (2,0) {$v_2$};
+    \node[draw, circle] (v3) at (0,-2) {$v_3$};
+    \node[draw, circle] (v4) at (-2,0) {$v_4$};
+    \draw (v1) edge[-] (v2) (v2) edge[-] (v3) (v3) edge[-] (v4) (v4) edge[-] (v1);
+    \draw[rotate=45] (0,1.35) ellipse (2.2 and 1);
+    \draw[rotate=45] (0,-1.35) ellipse (2.2 and 1);
+    \node (note) at (-2,2) {$G_1$};
+    \node (note2) at (2,-2) {$G_2$};
+}
+\end{tikzpicture}}
+\subfigure{
+\begin{tikzpicture}{
+    \node[draw, circle] (v1) at (0,2) {$v_1$};
+    \node[draw, circle] (v2) at (2,0) {$v_2$};
+    \node[draw, circle] (v3) at (0,-2) {$v_3$};
+    \node[draw, circle] (v4) at (-2,0) {$v_4$};
+    \draw (v1) edge[-] (v2) (v2) edge[-] (v3) (v3) edge[-] (v4) (v4) edge[-] (v1);
+    \draw plot [smooth cycle] coordinates {(0,0) (0.8,-2) (0,-2.8) (-2.6,0) (0,2.8) (0.8,2.3)};
+    \draw (v2) circle (0.7);
+    \node (note) at (-2,2) {$G_1$};
+    \node (note2) at (3.3,0) {$G_2$};
+}
+\end{tikzpicture}}
+\end{figure}
 \end{bsp}
 Es reicht offensichtlich folgenden Satz zu zeigen.
 \begin{sa}
@@ -118,14 +147,28 @@ In dem Beweis hiervon werden wir viele Begriffe verwenden, die von der Hydrologi
 Seien $G_1,\dotsc, G_k$ wie in Satz \ref{sa:2} und $i=2,\dotsc,k$. Für einen Knoten $v\in V\setminus G_i$ definieren wir ein \emph{Reservoir} 
 \[R(v)=\left\lbrace u\in V(G_i)\colon \exists u-v_i-\text{Weg in }G_i\setminus v\right\rbrace\] 
 \end{defn}
-\begin{bsp}
-TBW
+\begin{bsp} Sei folgender Graph einer der $G_i$.
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \node[draw, circle] (v1) at (0,-2) {$v_1$};
+        \node[draw, circle] (v2) at (2,0) {$v_2$};
+        \node[draw, circle] (v3) at (-2,0) {$v_3$};
+        \node[draw, circle] (vi) at (0,2) {$v_i$};
+        \draw (v1) edge[-] (v2)  (v3) edge[-] (vi) (vi) edge[-] (v1);
+    \end{tikzpicture}
+\end{figure}
+Dann sind $R(v_3)=\lbrace v_1,v_2\rbrace$, $R(v_1)=\lbrace v_3\rbrace$ und $R(v_2)=\lbrace v_3, v_1\rbrace$. Man sieht auch: $v\not\in R(v)$ und $R(v_i)=\emptyset$.
 \end{bsp}
 \begin{defn}
 Eine \emph{Kaskade} in $G_i$ ist eine (möglicherweise leere) Folge $w_1,\dotsc,w_m$ von Knoten in $G_i\setminus v_i$, sodass $w_{j+1}\not\in R(w_j)~\forall j=1,\dotsc,m-1$ 
 \end{defn}
 \begin{bsp}
-TBW
+Als mögliche Kaskaden im obigen Beispiel existieren: 
+\begin{enumerate}
+    \item die leere triviale Kaskade
+    \item die Folge: $v_1 v_2$
+\end{enumerate}
 \end{bsp}
 Also trennt $w_j$ $w_{j-1}$ von $w_{j+1}$ in $G_i$. Hierbei sei $w_0=v_i$. 
 \begin{defn}
@@ -137,6 +180,43 @@ Sei $w\in V(G_i)$ ein Kaskade Knoten. Wenn $w$ einen Nachbarn in $G_1$ hat, dann
 Für ein $r\ge 1$ sei $\rho_r=\abs{R(w)}$ für einen Kaskade Knoten $w$ mit Rang $r$. Eine Konfiguration heißt \emph{gültig}, wenn jeder Kaskade Knoten einen wohldefinierten Rang hat und der Rang streng ansteigt innerhalb der Kaskade. Die triviale Konfiguration (nur leere Kaskaden) ist offensichtlich gültig.
 \end{defn}
 \begin{bsp}
+    Wir betrachten noch einmal die Graphen aus dem ersten Beispiel:
+        \begin{figure}[h]
+        \centering
+        \subfigure{
+            \begin{tikzpicture}{
+                \node[draw, circle] (v1) at (0,2) {$v_1$};
+                \node[draw, circle] (v2) at (2,0) {$v_2$};
+                \node[draw, circle] (v3) at (0,-2) {$v_3$};
+                \node[draw, circle] (v4) at (-2,0) {$v_4$};
+                \draw (v1) edge[-] (v2) (v2) edge[-] (v3) (v3) edge[-] (v4) (v4) edge[-] (v1);
+                \draw[rotate=45] (0,1.35) ellipse (2.2 and 1);
+                \draw[rotate=45] (0,-1.35) ellipse (2.2 and 1);
+                \node (note) at (-2,2) {$G_1$};
+                \node (note2) at (2,-2) {$G_2$};
+            }
+            \end{tikzpicture}}
+        \subfigure{
+            \begin{tikzpicture}{
+                \node[draw, circle] (v1) at (0,2) {$v_2$};
+                \node[draw, circle] (v2) at (2,0) {$v_1$};
+                \node[draw, circle] (v3) at (0,-2) {$v_3$};
+                \node[draw, circle] (v4) at (-2,0) {$v_4$};
+                \draw (v1) edge[-] (v2) (v2) edge[-] (v3) (v3) edge[-] (v4) (v4) edge[-] (v1);
+                \draw plot [smooth cycle] coordinates {(0,0) (0.8,-2) (0,-2.8) (-2.6,0) (0,2.8) (0.8,2.3)};
+                \draw (v2) circle (0.7);
+                \node (note) at (-2,2) {$G_2$};
+                \node (note2) at (3.3,0) {$G_1$};
+            }
+            \end{tikzpicture}}
+    \end{figure}
+    Bei dem linken Graphen haben wir offensichtlich nur leere Kaskaden. Dies ist also nicht wirklich spannend. Sie ist trivialerweise gültig.
+    Bei dem rechten Graphen haben wir die Kaskaden:
+    \begin{itemize}
+        \item $G_2$: $v_4 v_3$
+        \item $G_1$: leer
+    \end{itemize}
+    Der Rang von $v_3$ ist 1, da $v_3$ Nachbar von $v_1$ aber der Rang von $v_4$ ist nicht definiert. Es handelt sich hierbei also nicht um eine gültige Konfiguration.
 \end{bsp}
 \begin{defn}
 Für $r\ge 1$ heißt eine gültige Konfiguration \emph{$r$-optimal}, wenn sie unter allen gültigen Konfigurationen $\rho_1$ maximiert unter der Bedingung, dass es $\rho_2$ maximiert usw. bis $\rho_r$. Wenn eine Konfiguration $r$-optimal ist für alle $r$, dann heißt sie einfach nur \emph{optimal}. \par 

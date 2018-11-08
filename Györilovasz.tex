@@ -41,7 +41,7 @@
 \usepackage{algorithm} % Erlaubt Pseudocode
 \usepackage{algorithmic}
 \usepackage{color} % Farbpaket wird geladen
-%\usepackage{stmaryrd} % St Mary Road Symbole werden geladen
+\usepackage{stmaryrd} % St Mary Road Symbole werden geladen
 
 % Hier werden neue Theorems erstellt.
 \theoremstyle{definition}
@@ -82,7 +82,7 @@
 \textsc{\LARGE Universität zu Köln }\\ [0.4cm]
 \textsc{ Mathematisches Institut} \\[1.5cm]
 
-%\includegraphics[width=0.45\textwidth]{uni}\\[1.5cm]  % Uni-Logo wird geladen
+\includegraphics[width=0.45\textwidth]{uni}\\[1.5cm]  % Uni-Logo wird geladen
 
 \textsc{\Large Ausarbeitung Seminar Informatik}\\[2mm]
 \textsc{\today}\\[10mm]
@@ -139,7 +139,7 @@ Sei $k\ge 2$ und $G$ ein $k$-zusammenhängender Graph mit $n$ Knoten. Seien $v_1
 \end{bsp}
 Es reicht offensichtlich folgenden Satz zu zeigen.
 \begin{sa}
-Sei $k\ge 2$ und $G$ ein $k$-zusammenhängender Graph mit $n$ Knoten. Seien $v_1,\dotsc,v_k$ paarweise verschiedene Knoten und $n_1,\dotsc,n_k\in\nn$ mit $\sum_{i=1}^kn_i<n$. Dann hat $G$ disjunkte zusammenhängende Teilgraphen $G_1,\dotsc,G_k$, sodass für $i=1,\dotsc,k$ $G_i$ genau $n_i$ Knoten hat und $v_i\in V(G_i)$ ist. Dann hat $G$ disjunkte zusammenhängende Teilgraphen $G'_1,\dotsc,G'_k$, sodass $v_i\in V(G'_i)~\forall i=1,\dotsc,k$. $G'_1$ hat $n_1+1$ Knoten und alle anderen $G'_i$ $n_i$ Knoten.
+Sei $k\ge 2$ und $G$ ein $k$-zusammenhängender Graph mit $n$ Knoten. Seien $v_1,\dotsc,v_k$ paarweise verschiedene Knoten und $n_1,\dotsc,n_k\in\nn$ mit $\sum_{i=1}^kn_i<n$. Seien $G_1,\dotsc,G_k$ disjunkte zusammenhängende Teilgraphen, sodass für $i=1,\dotsc,k$ $G_i$ genau $n_i$ Knoten hat und $v_i\in V(G_i)$ ist. Dann hat $G$ disjunkte zusammenhängende Teilgraphen $G'_1,\dotsc,G'_k$, sodass $v_i\in V(G'_i)~\forall i=1,\dotsc,k$. $G'_1$ hat $n_1+1$ Knoten und alle anderen $G'_i$ $n_i$ Knoten.
 \label{sa:2}
 \end{sa}
 In dem Beweis hiervon werden wir viele Begriffe verwenden, die von der Hydrologie inspiriert wurden. Knoten können als \emph{Dämme} agieren und andere Knoten von Rest eines Teilgraphen von $G$ abschneiden (Reservoir). Eine Folge von Dämmen nennen wir \emph{Kaskade}. Mathematisch bedeutet das:

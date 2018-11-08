@@ -1,0 +1,175 @@
+%% UzK - A BEAMER THEME FOR THE UNIVERSITY OF COLOGNE
+%% http://solstice.github.com/uzk-theme/
+
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath} % Erweiterung für den Mathe-Satz
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{multimedia}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+%% Falls Anzeige der \sections, \subsections etc. gewuenscht, kann zB.
+%% das infolines theme geladen werden. Wichtig ist jedoch, dass andere
+%% Themes _vor_ dem UzK-Theme geladen werden.
+%\useoutertheme{infolines}
+
+%% Falls keine der Optionen zur Bestimmung der Fusszeile uebergeben werden    %%
+%% werden alle Fakultaetsfarben verwendet. ---------------------------------- %%
+\newcommand{\abs}[1]{\left\vert #1\right\vert}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\g}{~\textgreater ~}
+\newcommand{\ls}{~\textless ~}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\e}{\varepsilon\g 0~}
+\newcommand{\fe}{\forall \e}
+\newcommand{\so}{\sum_{k=0}^{n}}
+\newcommand{\si}{\sum_{k=1}^{n}}
+\newcommand{\soi}{\sum_{k=0}^{\infty}}
+\newcommand{\sii}{\sum_{k=1}^{\infty}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\theoremstyle{definition}
+\newtheorem{auf}{Aufgabe}
+\newtheorem{rem}[auf]{Bemerkung}
+\newtheorem{defn}[auf]{Definition}
+\newtheorem{bsp}[auf]{Beispiel}
+\theoremstyle{plain}
+\newtheorem{kor}[auf]{Korollar}
+\newtheorem{sa}[auf]{Satz}
+\newtheorem{alg}[auf]{Algorithmus}
+\newtheorem{lem}[auf]{Lemma}
+\floatname{algorithm}{Algorithmus}
+\usetheme[%
+%wiso,        %% Wiso-Fakultaet
+%jura,        %% Rechtswissenschaftliche Fakultaet
+%medizin,     %% Medizinische Fakultaet
+%philo,       %% Philosophische Fakultaet
+matnat,      %% Mathematisch-Naturwissenschaftliche Fakultaet
+%human,       %% Humanwissenschaftliche Fakultaet
+%verw,        %% Universitaetsverwaltung
+%nav,         %% Schaltet die Navigationssymbole ein
+%latexfonts,  %% Verwendet die latex-beamer-Standardschrift
+%colorful,    %% Farbige Balken im infolines-Theme
+%squares,     %% Aufzaehlungspunkte rechteckig
+%nologo,      %% Kein Logo im Seitenhintergrund
+]{UzK}
+
+\title{Das \textsc{Györi-Lovasz}-Theorem}
+\author{Nils Dornbusch}%
+\subtitle{Seminarvortrag}
+\institute{ }
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Das \textsc{Györi-Lovasz}-Theorem}
+\begin{sa}[Satz 1]
+Sei $k\ge 2$ und $G$ ein $k$-zusammenhängender Graph mit $n$ Knoten. Seien $v_1,\dotsc,v_k$ paarweise verschiedene Knoten und $n_1,\dotsc,n_k\in\nn$ mit $\sum_{i=1}^kn_i=n$. Dann hat $G$ disjunkte zusammenhängende Teilgraphen $G_1,\dotsc,G_k$, sodass für $i=1,\dotsc,k$ $G_i$ genau $n_i$ Knoten hat und $v_i\in V(G_i)$ ist.
+\end{sa}
+\end{frame}
+\begin{frame}
+\frametitle{Beispiel zum Theorem}
+Hier für $k=2$ und $n_1=2=n_2$:
+\begin{figure}
+\begin{tikzpicture}{
+    \node[draw, circle] (v1) at (0,2) {$v_1$};
+    \node[draw, circle] (v2) at (2,0) {$v_2$};
+    \node[draw, circle] (v3) at (0,-2) {$v_3$};
+    \node[draw, circle] (v4) at (-2,0) {$v_4$};
+    \draw (v1) edge[-] (v2) (v2) edge[-] (v3) (v3) edge[-] (v4) (v4) edge[-] (v1);\pause
+    \draw[rotate=45] (0,1.35) ellipse (2.2 and 1);\pause
+    \draw[rotate=45] (0,-1.35) ellipse (2.2 and 1);\pause
+    \node (note) at (-2,2) {$G_1$};
+    \node (note2) at (2,-2) {$G_2$};
+}
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Beispiel zum Theorem (2)}
+Für $k=2$ und $n_1=3,~n_2=1$:
+\begin{figure}
+\begin{tikzpicture}{
+    \node[draw, circle] (v1) at (0,2) {$v_1$};
+    \node[draw, circle] (v2) at (2,0) {$v_2$};
+    \node[draw, circle] (v3) at (0,-2) {$v_3$};
+    \node[draw, circle] (v4) at (-2,0) {$v_4$};
+    \draw (v1) edge[-] (v2) (v2) edge[-] (v3) (v3) edge[-] (v4) (v4) edge[-] (v1);\pause
+    \draw plot [smooth cycle] coordinates {(0,0) (0.8,-2) (0,-2.8) (-2.6,0) (0,2.8) (0.8,2.3)};\pause
+    \draw (v2) circle (0.7);\pause
+    \node (note) at (-2,2) {$G_1$};
+    \node (note2) at (3.3,0) {$G_2$};
+}
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Den Satz den wir beweisen werden...}
+\begin{sa}[Satz 2]
+Sei $k\ge 2$ und $G$ ein $k$-zusammenhängender Graph mit $n$ Knoten. Seien $v_1,\dotsc,v_k$ paarweise verschiedene Knoten und $n_1,\dotsc,n_k\in\nn$ mit $\sum_{i=1}^kn_i<n$. Seien $G_1,\dotsc,G_k$ disjunkte zusammenhängende Teilgraphen , sodass für $i=1,\dotsc,k$ $G_i$ genau $n_i$ Knoten hat und $v_i\in V(G_i)$ ist. Dann hat $G$ disjunkte zusammenhängende Teilgraphen $G'_1,\dotsc,G'_k$, sodass $v_i\in V(G'_i)~\forall i=1,\dotsc,k$. $G'_1$ hat $n_1+1$ Knoten und alle anderen $G'_i$ $n_i$ Knoten.
+\end{sa}
+\end{frame}
+\begin{frame}
+\frametitle{Vorgehensweise}
+So wollen wir vorgehen:
+\begin{itemize}
+\item  Führen einige Begriffe aus der Hydrologie ein (Verständnis)\pause
+\item Beweisen von Lemmata\pause
+\item Beweisen von Satz 2 durch Widerspruch\pause
+\item daraus folgt das \textsc{Györi-Lovasz}-Theorem
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Reservoir}
+\label{Res}
+\only<1>{\begin{defn}
+Seien $G_1,\dotsc, G_k$ wie in Satz 2 und $i=2,\dotsc,k$. Für einen Knoten $v\in V\setminus G_i$ definieren wir ein \emph{Reservoir} 
+\[R(v)=\left\lbrace u\in V(G_i)\colon \exists u-v_i-\text{Weg in }G_i\setminus v\right\rbrace\] 
+\end{defn}}
+\only<2->{
+$R(v_3)=\lbrace v_1,v_2\rbrace$, $R(v_1)=\lbrace v_3\rbrace$ und $R(v_2)=\lbrace v_3, v_1\rbrace$ Man sieht also $v\not\in R(v)$  und $R(v_i)=\emptyset$.
+\begin{figure}
+ \begin{tikzpicture}
+        \node[draw, circle] (v1) at (0,-2) {$v_1$};
+        \node[draw, circle] (v2) at (2,0) {$v_2$};
+        \node[draw, circle] (v3) at (-2,0) {$v_3$};
+        \node[draw, circle] (vi) at (0,2) {$v_i$};
+        \draw (v1) edge[-] (v2)  (v3) edge[-] (vi) (vi) edge[-] (v1);
+    \end{tikzpicture}
+\end{figure}}
+\end{frame}
+\begin{frame}
+\frametitle{Kaskade}
+\begin{defn}
+Eine \emph{Kaskade} in $G_i$ ist eine (möglicherweise leere) Folge $w_1,\dotsc,w_m$ von Knoten in $G_i\setminus v_i$, sodass $w_{j+1}\not\in R(w_j)~\forall j=1,\dotsc,m-1$ 
+\end{defn}
+\end{frame}
+\begin{frame}
+\frametitle{Beispiel einer Kaskade}
+\begin{figure}
+ \begin{tikzpicture}
+        \node[draw, circle] (v1) at (0,-2) {$v_1$};
+        \node[draw, circle] (v2) at (2,0) {$v_2$};
+        \node[draw, circle] (v3) at (-2,0) {$v_3$};
+        \node[draw, circle] (vi) at (0,2) {$v_i$};
+        \draw (v1) edge[-] (v2)  (v3) edge[-] (vi) (vi) edge[-] (v1);
+    \end{tikzpicture}
+\end{figure}
+Mögliche Kaskaden:
+\begin{enumerate}
+    \item die leere triviale Kaskade
+    \item die Folge: $v_1 v_2$
+\end{enumerate}
+\end{frame}
+\end{document}

@@ -172,4 +172,107 @@ Mögliche Kaskaden:
     \item die Folge: $v_1 v_2$
 \end{enumerate}
 \end{frame}
+\begin{frame}
+\frametitle{Konfiguration}
+\begin{defn}
+Unter einer \emph{Konfiguration} verstehen wir eine Wahl von Teilgraphen $G_1,\dotsc,G_k$ wie in Satz 2 und genau eine Kaskade in jedem $G_i$ $\forall i=2,\dotsc,k$. Ein \emph{Kaskade Knoten} ist ein Knoten der zu einer Kaskade der Konfiguration gehört.
+\end{defn}
+\end{frame}
+\begin{frame}
+\frametitle{Verschiedene Definitionen}
+\begin{defn}
+Sei $w\in V(G_i)$ ein Kaskade Knoten. Wenn $w$ einen Nachbarn in $G_1$ hat, dann hat $w$ \emph{Rang} 1. Sonst in der Rang das kleinste $k\ge 2$, so dass ein Kaskade Knoten $w'\in V(G_j)$ existiert für ein $j=\lbrace 2,\dotsc,k\rbrace\setminus \lbrace i\rbrace$, so dass $w$ einen Nachbarn in $R(w')$ hat und $w'$ Rang $k-1$ hat. Wenn es keinen solchen Nachbarn gibt, ist der Rang nicht definiert. 
+\end{defn}
+\uncover<2>{\begin{defn}
+Für ein $r\ge 1$ sei $\rho_r=\abs{R(w)}$ für einen Kaskade Knoten $w$ mit Rang $r$. Eine Konfiguration heißt \emph{gültig}, wenn jeder Kaskade Knoten einen wohldefinierten Rang hat und der Rang streng ansteigt innerhalb der Kaskade. Die triviale Konfiguration (nur leere Kaskaden) ist offensichtlich gültig.
+\end{defn}}
+\end{frame}
+\begin{frame}
+\frametitle{Beispiele}
+\begin{figure}
+\begin{tikzpicture}{
+                \node[draw, circle] (v1) at (0,2) {$v_1$};
+                \node[draw, circle] (v2) at (2,0) {$v_2$};
+                \node[draw, circle] (v3) at (0,-2) {$v_3$};
+                \node[draw, circle] (v4) at (-2,0) {$v_4$};
+                \draw (v1) edge[-] (v2) (v2) edge[-] (v3) (v3) edge[-] (v4) (v4) edge[-] (v1);
+                \draw[rotate=45] (0,1.35) ellipse (2.2 and 1);
+                \draw[rotate=45] (0,-1.35) ellipse (2.2 and 1);
+                \node (note) at (-2,2) {$G_1$};
+                \node (note2) at (2,-2) {$G_2$};
+            }
+            \end{tikzpicture}
+            \end{figure}
+            \uncover<2>{Offensichtlich nur die leere Konfiguration (offensichtlich gültig)}
+\end{frame}
+\begin{frame}
+\frametitle{Beispiele (2)}
+\begin{figure}
+\uncover<2>{
+  \begin{itemize}
+        \item $G_2$: $v_4 v_3$ (nicht gültig)
+        \item $G_1$: leer (gültig)
+    \end{itemize}}
+ \begin{tikzpicture}{
+                \node[draw, circle] (v1) at (0,2) {$v_2$};
+                \node[draw, circle] (v2) at (2,0) {$v_1$};
+                \node[draw, circle] (v3) at (0,-2) {$v_3$};
+                \node[draw, circle] (v4) at (-2,0) {$v_4$};
+                \draw (v1) edge[-] (v2) (v2) edge[-] (v3) (v3) edge[-] (v4) (v4) edge[-] (v1);
+                \draw plot [smooth cycle] coordinates {(0,0) (0.8,-2) (0,-2.8) (-2.6,0) (0,2.8) (0.8,2.3)};
+                \draw (v2) circle (0.7);
+                \node (note) at (-2,2) {$G_2$};
+                \node (note2) at (3.3,0) {$G_1$};
+            }
+            \end{tikzpicture}
+            \end{figure}
+          
+\end{frame}
+\begin{frame}
+\frametitle{Letzte Definitionen}
+\uncover<1->{\begin{defn}
+Für $r\ge 1$ heißt eine gültige Konfiguration \emph{$r$-optimal}, wenn sie unter allen gültigen Konfigurationen $\rho_1$ maximiert unter der Bedingung, dass es $\rho_2$ maximiert usw. bis $\rho_r$. Wenn eine Konfiguration $r$-optimal ist für alle $r$, dann heißt sie einfach nur \emph{optimal}. \end{defn}}
+\uncover<2>{
+\begin{defn}
+Zum Schluss definieren wir $S:=V(G)\setminus \bigcup G_i$. Das ist in dem Aufbau von Satz 2 nichtleer. Wir sagen eine \emph{Brücke} ist eine Kante mit einem Ende in $S$ und dem anderen Ende in einem Kaskade Knoten. In einer gültigen Konfiguration ist der \emph{Rang der Brücke} das Minimum der Ränge aller Kaskade Knoten $w$, wobei die Brücke ein Ende in $R(w)$ hat. 
+\end{defn}}
+\end{frame}
+\begin{frame}
+\frametitle{Ab jetzt beweisen wir}
+\begin{lem}[Lemma 1]
+Wenn es eine optimale Konfiguration gibt, die eine Brücke enthält, dann folgt Satz 2.
+\end{lem}
+\end{frame}
+\begin{frame}
+PLACEHOLDER für Beweis
+\end{frame}
+\begin{frame}
+\frametitle{Noch ein Lemma}
+\begin{lem}
+Angenommen es gibt eine optimale Konfiguration mit einer Kante $ab$, so dass 
+\begin{enumerate}
+\item Entweder $a\in V(G_1)$ oder $a$ ist in einem Reservoir und
+\item $b\in V(G_i)$ für ein $r\in\lbrace 2,\dotsc,k\rbrace,~b\neq v_i$ und $b$ ist nicht in einem Reservoir.
+\end{enumerate}
+Dann ist die Kaskade von $g_i$ nicht leer und $b$ ist der letzte Knoten dieser Kaskade.
+\end{lem}
+\end{frame}
+\begin{frame}
+PLACEHOLDER für Beweis
+\end{frame}
+\begin{frame}
+\frametitle{Beweis von Satz 2}
+\begin{itemize}
+\item Wir nehmen an: $G$ hat eine optimale Konfiguration ohne Brücke der aber Lemma 2 genügt.
+\item Betrachte die Menge $M$, die folgende Knoten enthält:
+\begin{itemize}
+\item die letzten Knoten einer nicht-leeren Kaskade
+\item $v_i$, falls $G_i$ nur die leere Kaskade besitzt
+\end{itemize}
+\item $M$ ist dann ein $k-1$-Schnitt von $G$, der $G_1$ und die Reservoirs vom Rest des Graphen (inkl. $S$) trennt.
+\item Widerspruch zum $k-$Zusammenhang
+\item Also sind die Voraussetzungen von Lemma 1 erfüllt.
+\item Daraus folgt Satz 2
+\end{itemize}
+\end{frame}
 \end{document}

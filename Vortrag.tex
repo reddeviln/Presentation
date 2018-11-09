@@ -244,7 +244,75 @@ Wenn es eine optimale Konfiguration gibt, die eine Brücke enthält, dann folgt 
 \end{lem}
 \end{frame}
 \begin{frame}
-PLACEHOLDER für Beweis
+\frametitle{Beweis}
+\begin{itemize}[<+->]
+    \item Angenommen es gibt eine optimale Konfiguration mit Brücke
+    \item Für $r\in\nn~\exists$ Brücke mit Rang $r$ (sei $r$ minimal)
+    \item Endpunkte der Brücke $a\in S$, $b\in R(w),w\in G_i$, Rang $w=r$
+    \begin{itemize}[<+->]
+        \item Angenommen $w$ trennt $G_i$
+        \item Alle Kaskade Knoten in $V(G_i)\setminus R(w)\setminus w$ haben Rang größer $r$
+        \item Wähle aus diesen ein $u$, welches nicht-trennend ist
+        \item neue gültige Konfiguration: $u\rightarrow S$ und $a\rightarrow G_i$ 
+        \item lösche dazu Kaskade Knoten aus der obigen Menge
+        \item Rang der betroffenen Knoten $>r$
+        \item neue gültige Konfiguration und $R(w)$ ist größer 
+        \item Widerspruch zur r-Optimalität
+    \end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Beispiel vorher}
+    \begin{figure}
+        \begin{tikzpicture}
+            \node[draw, circle] (vi) at (-2,0) {$v_i$};
+            \node[draw, circle] (z1) at (0,0) {$z_1$};
+            \node[draw, circle] (z2) at (2,0) {$z_2$};
+            \node[draw, circle] (w) at (4,0) {$w$};
+            \node[draw, circle] (b) at (3,2) {$b$};
+            \node[draw, circle] (a) at (6,4) {$a$};
+            \node[draw, circle] (u) at (6,0) {$u$};
+            \draw (vi) edge[-] (z1) (z1) edge[-] (z2) (z2) edge [-] (b) (b) edge[-] (w) (z2) edge[-] (w) (b) edge[-] (a) (w) edge[-] (u);
+            \draw (2,0) ellipse (5 and 3);
+            \node at (0,3) {$G_i$};\pause
+            \draw[red] plot [smooth cycle] coordinates{(-1,0) (1.5,2) (4,2.5) (2.2,-1) (-1,-1)};
+            \node[red] at (-1,-1.5) {$R(w)$};
+        \end{tikzpicture}
+    \end{figure}
+\end{frame}
+\begin{frame}
+    \frametitle{Beispiel nachher}
+     \begin{figure}
+        \begin{tikzpicture}
+        \node[draw, circle] (vi) at (-2,0) {$v_i$};
+        \node[draw, circle] (z1) at (0,0) {$z_1$};
+        \node[draw, circle] (z2) at (2,0) {$z_2$};
+        \node[draw, circle] (w) at (4,0) {$w$};
+        \node[draw, circle] (b) at (3,2) {$b$};
+        \node[draw, circle] (a) at (6,0) {$a$};
+        \node[draw, circle] (u) at (6,4) {$u$};
+        \draw (vi) edge[-] (z1) (z1) edge[-] (z2) (z2) edge [-] (b) (b) edge[-] (w) (z2) edge[-] (w) (b) edge[-] (a) (w) edge[-] (u);
+        \draw (2,0) ellipse (5 and 3);
+        \node at (0,3) {$G_i$};\pause
+        \draw[red] plot [smooth cycle] coordinates{(-1,0) (1.5,2) (4,2.5) (5,1) (7,0) (6,-1) (4,1) (2.2,-1) (-1,-1)};
+        \node[red] at (-1,-1.5) {$R(w)$};
+        \end{tikzpicture}
+    \end{figure}
+\end{frame}
+\begin{frame}
+    \frametitle{Weiter im Beweis}
+     \begin{itemize}[<+->]
+         \item Also trennt $w$ nicht $G_i$. Angenommen $r=1$.
+         \item Dann hat $w$ einen Nachbarn in $G_1$
+         \item Definiere $G_1'=G_1+w$ und $G_i':=(G_i+a)\setminus w$
+         \item Bei allen anderen $j$ ist $G_j'=G_j$ und damit folgt der Schluss von Satz 2
+         \item Sei also $r>1$. $w$ hat also einen Nachbarn in einem $R(w')$ mit Rang $w'=r-1$.
+         \item Neue Konfiguration: $w\rightarrow S$ und $a\rightarrow G_i$. 
+         \item Kaskaden: Kaskade vor $w$ abbrechen und bei undefiniertem Rang Knoten ausschließen
+         \item Reservoirs vom Rang $\ge r$ beeinflusst aber immernoch $r-1$ optimal
+         \item Es gibt jetzt eine Brücke von Rang $r-1$ (w zu seinem Nachbar in $R(w')$
+         \item Widerspruch zur Minimalität von $r$ \qed
+     \end{itemize}
 \end{frame}
 \begin{frame}
 \frametitle{Noch ein Lemma}
@@ -254,11 +322,12 @@ Angenommen es gibt eine optimale Konfiguration mit einer Kante $ab$, so dass
 \item Entweder $a\in V(G_1)$ oder $a$ ist in einem Reservoir und
 \item $b\in V(G_i)$ für ein $r\in\lbrace 2,\dotsc,k\rbrace,~b\neq v_i$ und $b$ ist nicht in einem Reservoir.
 \end{enumerate}
-Dann ist die Kaskade von $g_i$ nicht leer und $b$ ist der letzte Knoten dieser Kaskade.
+Dann ist die Kaskade von $G_i$ nicht leer und $b$ ist der letzte Knoten dieser Kaskade.
 \end{lem}
 \end{frame}
 \begin{frame}
-PLACEHOLDER für Beweis
+\frametitle{Beweis}
+siehe Ausarbeitung
 \end{frame}
 \begin{frame}
 \frametitle{Beweis von Satz 2}

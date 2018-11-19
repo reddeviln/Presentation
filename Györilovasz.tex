@@ -144,7 +144,7 @@ Sei $k\ge 2$ und $G$ ein $k$-zusammenhängender Graph mit $n$ Knoten. Seien $v_1
 \end{sa}
 In dem Beweis hiervon werden wir viele Begriffe verwenden, die von der Hydrologie inspiriert wurden. Knoten können als \emph{Dämme} agieren und andere Knoten von Rest eines Teilgraphen von $G$ abschneiden (Reservoir). Eine Folge von Dämmen nennen wir \emph{Kaskade}. Mathematisch bedeutet das:
 \begin{defn}
-Seien $G_1,\dotsc, G_k$ wie in Satz \ref{sa:2} und $i=2,\dotsc,k$. Für einen Knoten $v\in V\setminus G_i$ definieren wir ein \emph{Reservoir} 
+Seien $G_1,\dotsc, G_k$ wie in Satz \ref{sa:2} und $i=2,\dotsc,k$. Für einen Knoten $v\in V(G_i)$ definieren wir ein \emph{Reservoir} 
 \[R(v)=\left\lbrace u\in V(G_i)\colon \exists u-v_i-\text{Weg in }G_i\setminus v\right\rbrace\] 
 \end{defn}
 \begin{bsp} Sei folgender Graph einer der $G_i$.
@@ -176,7 +176,7 @@ Unter einer \emph{Konfiguration} verstehen wir eine Wahl von Teilgraphen $G_1,\d
 \end{defn}
 Nun benötigen wir eine rekursive Definition für den nächsten Begriff.
 \begin{defn}
-Sei $w\in V(G_i)$ ein Kaskade Knoten. Wenn $w$ einen Nachbarn in $G_1$ hat, dann hat $w$ \emph{Rang} 1. Sonst in der Rang das kleinste $k\ge 2$, so dass ein Kaskade Knoten $w'\in V(G_j)$ existiert für ein $j=\lbrace 2,\dotsc,k\rbrace\setminus \lbrace i\rbrace$, so dass $w$ einen Nachbarn in $R(w')$ hat und $w'$ Rang $k-1$ hat. Wenn es keinen solchen Nachbarn gibt, ist der Rang nicht definiert. \par
+Sei $w\in V(G_i)$ ein Kaskade Knoten. Wenn $w$ einen Nachbarn in $G_1$ hat, dann hat $w$ \emph{Rang} 1. Sonst ist der Rang das kleinste $k\ge 2$, so dass ein Kaskade Knoten $w'\in V(G_j)$ existiert für ein $j=\lbrace 2,\dotsc,k\rbrace\setminus \lbrace i\rbrace$, so dass $w$ einen Nachbarn in $R(w')$ hat und $w'$ Rang $k-1$ hat. Wenn es keinen solchen Nachbarn gibt, ist der Rang nicht definiert. \par
 Für ein $r\ge 1$ sei $\rho_r=\abs{R(w)}$ für einen Kaskade Knoten $w$ mit Rang $r$. Eine Konfiguration heißt \emph{gültig}, wenn jeder Kaskade Knoten einen wohldefinierten Rang hat und der Rang streng ansteigt innerhalb der Kaskade. Die triviale Konfiguration (nur leere Kaskaden) ist offensichtlich gültig.
 \end{defn}
 \begin{bsp}

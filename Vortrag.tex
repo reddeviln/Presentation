@@ -134,7 +134,7 @@ So wollen wir vorgehen:
 \frametitle{Reservoir}
 \label{Res}
 \only<1>{\begin{defn}
-Seien $G_1,\dotsc, G_k$ wie in Satz 2 und $i=2,\dotsc,k$. Für einen Knoten $v\in V\setminus G_i$ definieren wir ein \emph{Reservoir} 
+Seien $G_1,\dotsc, G_k$ wie in Satz 2 und $i=2,\dotsc,k$. Für einen Knoten $v\in V(G_i)$ definieren wir ein \emph{Reservoir} 
 \[R(v)=\left\lbrace u\in V(G_i)\colon \exists u-v_i-\text{Weg in }G_i\setminus v\right\rbrace\] 
 \end{defn}}
 \only<2->{
@@ -181,7 +181,7 @@ Unter einer \emph{Konfiguration} verstehen wir eine Wahl von Teilgraphen $G_1,\d
 \begin{frame}
 \frametitle{Verschiedene Definitionen}
 \begin{defn}
-Sei $w\in V(G_i)$ ein Kaskade Knoten. Wenn $w$ einen Nachbarn in $G_1$ hat, dann hat $w$ \emph{Rang} 1. Sonst in der Rang das kleinste $k\ge 2$, so dass ein Kaskade Knoten $w'\in V(G_j)$ existiert für ein $j=\lbrace 2,\dotsc,k\rbrace\setminus \lbrace i\rbrace$, so dass $w$ einen Nachbarn in $R(w')$ hat und $w'$ Rang $k-1$ hat. Wenn es keinen solchen Nachbarn gibt, ist der Rang nicht definiert. 
+Sei $w\in V(G_i)$ ein Kaskade Knoten. Wenn $w$ einen Nachbarn in $G_1$ hat, dann hat $w$ \emph{Rang} 1. Sonst ist der Rang das kleinste $k\ge 2$, so dass ein Kaskade Knoten $w'\in V(G_j)$ existiert für ein $j=\lbrace 2,\dotsc,k\rbrace\setminus \lbrace i\rbrace$, so dass $w$ einen Nachbarn in $R(w')$ hat und $w'$ Rang $k-1$ hat. Wenn es keinen solchen Nachbarn gibt, ist der Rang nicht definiert. 
 \end{defn}
 \uncover<2>{\begin{defn}
 Für ein $r\ge 1$ sei $\rho_r=\abs{R(w)}$ für einen Kaskade Knoten $w$ mit Rang $r$. Eine Konfiguration heißt \emph{gültig}, wenn jeder Kaskade Knoten einen wohldefinierten Rang hat und der Rang streng ansteigt innerhalb der Kaskade. Die triviale Konfiguration (nur leere Kaskaden) ist offensichtlich gültig.

@@ -220,7 +220,7 @@ Für ein $r\ge 1$ sei $\rho_r=\abs{R(w)}$ für einen Kaskade Knoten $w$ mit Rang
 \end{bsp}
 \begin{defn}
 Für $r\ge 1$ heißt eine gültige Konfiguration \emph{$r$-optimal}, wenn sie unter allen gültigen Konfigurationen $\rho_1$ maximiert unter der Bedingung, dass es $\rho_2$ maximiert usw. bis $\rho_r$. Wenn eine Konfiguration $r$-optimal ist für alle $r$, dann heißt sie einfach nur \emph{optimal}. \par 
-Zum Schluss definieren wir $S:=V(G)\setminus \bigcup G_i$. Das ist in dem Aufbau von Satz \ref{sa:2} nichtleer. Wir sagen eine \emph{Brücke} ist eine Kante mit einem Ende in $S$ und dem anderen Ende in einem Kaskade Knoten. In einer gültigen Konfiguration ist der \emph{Rang der Brücke} das Minimum der Ränge aller Kaskade Knoten $w$, wobei die Brücke ein Ende in $R(w)$ hat. 
+Zum Schluss definieren wir $S:=V(G)\setminus \bigcup G_i$. Das ist in dem Aufbau von Satz \ref{sa:2} nichtleer. Wir sagen eine \emph{Brücke} ist eine Kante mit einem Ende in $S$ und dem anderen Ende in dem Reservoir eines Kaskade Knotens. In einer gültigen Konfiguration ist der \emph{Rang der Brücke} das Minimum der Ränge aller Kaskade Knoten $w$, wobei die Brücke ein Ende in $R(w)$ hat. 
 \end{defn}
 
 \begin{lem}
@@ -230,12 +230,12 @@ Wenn es eine optimale Konfiguration gibt, die eine Brücke enthält, dann folgt 
 \begin{proof}
 Angenommen es gibt eine optimale Konfiguration mit Brücke. Dann können wir für ein $r\in\nn$ eine Konfiguration finden, die $r$-optimal ist und eine Brücke vom Rang $r$ enthält. Wähle die Konfiguration und Brücke so, dass $r$ minimal ist. Seien $a\in S$ und $b\in R(w)\subset V(G_i)$ die Endpunkte der Brücke, wobei Rang von $w$ $r$ ist.\par
 Angenommen $w$ trennt $G_i$. Weil die Konfiguration gültig ist $\Rightarrow$ Alle Kaskade Knoten in $V(G_i)\setminus R(w)\setminus w$ haben Rang größer $r$. Sei $u$ von diesen ein nicht trennender Knoten. Eine neue gültige Konfiguration kann man wie folgt machen: Verschiebe $u$ nach $S$ und $a$ zu $G_i$. Wir lassen die Kaskaden gleich. Allerdings löschen wir alle Kaskade Knoten in $V(G_i)\setminus R(w)\setminus w$  und alle, deren Rang jetzt nicht definiert ist. Alle Knoten die betroffen sind haben Rang $>r$. Jetzt ist unsere neue Konfiguration gültig und $R(w)$ ist größer. Wir haben keine Reservoirs der Größe maximal $r$ geändert. Das ist aber ein Widerspruch zur $r$-Optimalität.\par 
-Also ist $w$ nich trennend für $G_i$. Sei $r=1$. Wähle $G'_1=G_1+w$ (inkl. aller Kanten die mit $w$ und $G_1$ indizieren) und $G'_i=G_i+a\setminus w$. Alle anderen lassen wir unverändert. Dann genügen diese Teilgraphen der Aussage von Satz \ref{sa:2}. \par 
+Also ist $w$ nicht trennend für $G_i$. Sei $r=1$. Wähle $G'_1=G_1+w$ (inkl. aller Kanten die mit $w$ und $G_1$ indizieren) und $G'_i=(G_i+a)\setminus w$. Alle anderen lassen wir unverändert. Dann genügen diese Teilgraphen der Aussage von Satz \ref{sa:2}. \par 
 Wenn $r>1$, hat $w$ einen Nachbarn in einem $R(w')$ mit Rang von $w'_i=r-1$. Wie vorher bauen wir eine neue gültige Konfiguration indem wir $w$ nach $S$ und $a$ nach $G_i$ verschieben. Kaskaden lassen wir wieder gleich, aber: beende $w$s vorherige Kaskade genau vor $w$ und lösche alle Kaskade Knoten, deren Rang nicht mehr definiert ist. Obwohl wir möglicherweise mehrere Reservoirs von Rang $r$ und darüber verloren haben, ist die neue Konfiguration noch $(r-1)$ optimal. Die Kante von $w$ zu dem Nachbarn in $R(w')$ ist jetzt eine $r-1$-Brücke. Das ist ein Widerspruch zur Minimalität von $r$.
 \end{proof}
 \begin{lem}
 \label{lem:4}
-Angenommen es gibt eine optimale Konfiguration mit einer Kante $ab$, so dass 
+Angenommen es gibt eine optimale Konfiguration mit einer Kante $ab$, sodass  
 \begin{enumerate}
 \item Entweder $a\in V(G_1)$ oder $a$ ist in einem Reservoir und
 \item $b\in V(G_i)$ für ein $r\in\lbrace 2,\dotsc,k\rbrace,~b\neq v_i$ und $b$ ist nicht in einem Reservoir.

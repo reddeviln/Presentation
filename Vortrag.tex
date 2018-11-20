@@ -234,7 +234,7 @@ Für ein $r\ge 1$ sei $\rho_r=\abs{R(w)}$ für einen Kaskade Knoten $w$ mit Rang
 Für $r\ge 1$ heißt eine gültige Konfiguration \emph{$r$-optimal}, wenn sie unter allen gültigen Konfigurationen $\rho_1$ maximiert unter der Bedingung, dass es $\rho_2$ maximiert usw. bis $\rho_r$. Wenn eine Konfiguration $r$-optimal ist für alle $r$, dann heißt sie einfach nur \emph{optimal}. \end{defn}}
 \uncover<2>{
 \begin{defn}
-Zum Schluss definieren wir $S:=V(G)\setminus \bigcup G_i$. Das ist in dem Aufbau von Satz 2 nichtleer. Wir sagen eine \emph{Brücke} ist eine Kante mit einem Ende in $S$ und dem anderen Ende in einem Kaskade Knoten. In einer gültigen Konfiguration ist der \emph{Rang der Brücke} das Minimum der Ränge aller Kaskade Knoten $w$, wobei die Brücke ein Ende in $R(w)$ hat. 
+Zum Schluss definieren wir $S:=V(G)\setminus \bigcup G_i$. Das ist in dem Aufbau von Satz 2 nichtleer. Wir sagen eine \emph{Brücke} ist eine Kante mit einem Ende in $S$ und dem anderen Ende in dem Reservoir eines Kaskade Knoten. In einer gültigen Konfiguration ist der \emph{Rang der Brücke} das Minimum der Ränge aller Kaskade Knoten $w$, wobei die Brücke ein Ende in $R(w)$ hat. 
 \end{defn}}
 \end{frame}
 \begin{frame}
@@ -327,14 +327,37 @@ Dann ist die Kaskade von $G_i$ nicht leer und $b$ ist der letzte Knoten dieser K
 \end{frame}
 \begin{frame}
 \frametitle{Beweis}
-siehe Ausarbeitung
+\begin{itemize}[<+->]
+    \item Angenommen, es gibt so eine Kante und $b$ ist nicht der letzte Knoten in der Kaskade $w_1,\dotsc,w_m$ von $G_i$
+    \item $b$ nicht in einem Reservoir und $b$ nicht letzter Kaskade Knoten $\Rightarrow$ $b$ kein Kaskade Knoten
+    \item Dann setzen wir $b$ ans Ende der Kaskade von $G_i$ 
+    \item Wegen 1. hat $b$ wohldefinierten Rang
+    \item Wenn der Rang größer ist als alle anderen, dann haben wir eine gültige Konfiguration und Widerspruch
+    \item Wenn nicht: Wir wissen die Kaskade von $G_i$ ist nicht leer
+    \item Sei $rank(b)=r$ und $j\in\nn_0$, s.d.
+    \begin{enumerate}[<+->]
+        \item $j=0$, wenn $r\le rank(w_1)$ 
+        \item $rank(w_j)<r\le rank(w_{j+1})$
+    \end{enumerate}
+    \item Schließe $w_{j+1},\dotsc,w_m$ aus der Kaskade aus und füge $b$ stattdessen hinzu
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Fortsetzung Beweis}
+   \begin{itemize}[<+->]
+    \item Offensichtlich gültig aber nicht klar ob Widerspruch zur Optimalität
+    \item Sehe: Jeder Knoten in $\bigcup_{j+1}^m R(w_i)$ ist jetzt auch in $R(b)$
+    \item Außerdem ist $w_m\in R(b)$.
+    \item Rang $r$ Reservoir vergrößert ohne Reservoirs geringeren Ranges zu verändern
+    \item Widerspruch
+ \end{itemize}
 \end{frame}
 \begin{frame}
 \frametitle{Beweis von Satz 2}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Wir nehmen an: $G$ hat eine optimale Konfiguration ohne Brücke der aber Lemma 2 genügt.
 \item Betrachte die Menge $M$, die folgende Knoten enthält:
-\begin{itemize}
+\begin{itemize}[<+->]
 \item die letzten Knoten einer nicht-leeren Kaskade
 \item $v_i$, falls $G_i$ nur die leere Kaskade besitzt
 \end{itemize}
